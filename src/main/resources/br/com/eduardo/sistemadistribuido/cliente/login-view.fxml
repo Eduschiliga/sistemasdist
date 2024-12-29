@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.eduardo.sistemadistribuido.cliente.controller.LoginController">
+   <center>
+      <VBox prefHeight="141.0" prefWidth="299.0" BorderPane.alignment="CENTER">
+         <Label text="RA">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <TextField fx:id="ra">
+            <VBox.margin>
+               <Insets bottom="25.0" />
+            </VBox.margin>
+         </TextField>
+         <Label text="SENHA">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <PasswordField fx:id="senha" />
+      </VBox>
+   </center>
+   <top>
+      <Pane prefHeight="146.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <Text layoutX="258.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Login" textAlignment="CENTER">
+            <font>
+               <Font size="32.0" />
+            </font>
+         </Text>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="3.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="2.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <Label fx:id="mensagenErro" layoutX="150.0" layoutY="50.0" prefHeight="30.0" prefWidth="300.0" style="-fx-font-weight: bold;" textFill="red" />
+         <Button fx:id="entrar" layoutX="150.0" layoutY="100.0" mnemonicParsing="false" onAction="#efetuarLogin" prefHeight="30.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Entrar" />
+         <Hyperlink fx:id="cadastrar" layoutX="150.0" layoutY="140.0" onAction="#efetuarCadastro" text="Realize o seu cadastro!" />
+      </Pane>
+   </bottom>
+</BorderPane>
