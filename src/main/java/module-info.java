@@ -4,6 +4,8 @@ module br.com.eduardo.sistemadistribuido {
   requires javafx.web;
   requires static lombok;
   requires com.fasterxml.jackson.databind;
+  requires com.fasterxml.jackson.annotation;
+  requires com.fasterxml.jackson.core;
   requires java.persistence;
   requires java.validation;
   requires com.sun.istack.runtime;
@@ -11,7 +13,7 @@ module br.com.eduardo.sistemadistribuido {
   requires org.hibernate.orm.core;
   requires javafx.base;
 
-  opens br.com.eduardo.sistemadistribuido.entity to org.hibernate.orm.core, javafx.base, com.fasterxml.jackson.databind;
+  opens br.com.eduardo.sistemadistribuido.entity to org.hibernate.orm.core, javafx.base, com.fasterxml.jackson.databind, com.fasterxml.jackson.annotation, com.fasterxml.jackson.core;
   opens br.com.eduardo.sistemadistribuido.model.dto to org.hibernate.orm.core;
 
   exports br.com.eduardo.sistemadistribuido.model.response to com.fasterxml.jackson.databind;

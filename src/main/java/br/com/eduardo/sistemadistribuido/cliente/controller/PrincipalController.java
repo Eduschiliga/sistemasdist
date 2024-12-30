@@ -10,29 +10,30 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class PrincipalController {
   private Parent fxmlHome;
-  private Parent fxmlVincularAviso;
-  private Parent fxmlVisualizarAviso;
-
 
   @FXML
   private BorderPane principal;
 
   @FXML
-  void visualizar(ActionEvent event) {
+  void visualizar(ActionEvent event) throws IOException {
     setTela("Home");
   }
 
   @FXML
-  void vincularAviso(ActionEvent event) {
+  void vincularAviso(ActionEvent event) throws IOException {
     setTela("VincularAviso");
   }
 
   @FXML
-  void visualizarAviso(ActionEvent event) {
+  void visualizarUsuario(ActionEvent event) throws IOException {
+    setTela("VisualizarUsuario");
+  }
+
+  @FXML
+  void visualizarAviso(ActionEvent event) throws IOException {
     setTela("VisualizarAviso");
   }
 
@@ -41,7 +42,7 @@ public class PrincipalController {
     LogoutService.logout();
   }
 
-  private void setTela(String tela) {
+  private void setTela(String tela) throws IOException {
     switch (tela) {
       case "Home":
         if (fxmlHome != null) {
@@ -52,6 +53,8 @@ public class PrincipalController {
         break;
 
       case "VincularAviso":
+        Parent fxmlVincularAviso = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/vincular-aviso.fxml")));
+
         if (fxmlVincularAviso != null) {
           principal.setCenter(fxmlVincularAviso);
         } else {
@@ -60,25 +63,36 @@ public class PrincipalController {
         break;
 
       case "VisualizarAviso":
+        Parent fxmlVisualizarAviso = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/visualizar-aviso.fxml")));
+
         if (fxmlVisualizarAviso != null) {
           principal.setCenter(fxmlVisualizarAviso);
         } else {
           AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarAviso' não carregada.");
         }
         break;
+
+      case "VisualizarUsuario":
+        Parent fxmlVisualizarUsuario = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/usuario-view.fxml")));
+
+        if (fxmlVisualizarUsuario != null) {
+          principal.setCenter(fxmlVisualizarUsuario);
+        } else {
+          AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarUsuario' não carregada.");
+        }
+        break;
     }
   }
 
   @FXML
-  void initialize() {
+  void initialize() throws IOException {
     try {
       fxmlHome = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/home-view.fxml")));
-      fxmlVisualizarAviso = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/visualizar-aviso.fxml")));
-      fxmlVincularAviso = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/vincular-aviso.fxml")));
 
-      principal.setCenter(fxmlHome);
     } catch (IOException e) {
-      AlertUtil.alert("Erro", "Carregamento de tela", "Erro ao carregar tela principal.");
+      setTela("Home");
+    } finally {
+      setTela("Home");
     }
   }
 }

@@ -92,4 +92,12 @@ public class AlertUtil {
       }
     }
   }
+
+  public static void mostrarErro(String mensagem) {
+    new Alert(Alert.AlertType.ERROR, mensagem).showAndWait();
+  }
+
+  public static void mostrarSucesso(String mensagem) {
+    new Alert(Alert.AlertType.INFORMATION, mensagem).showAndWait();
+  }
 }

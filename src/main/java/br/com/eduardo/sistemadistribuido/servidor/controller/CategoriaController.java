@@ -11,6 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.persistence.EntityManager;
 
+import static br.com.eduardo.sistemadistribuido.util.AlertUtil.mostrarErro;
+import static br.com.eduardo.sistemadistribuido.util.AlertUtil.mostrarSucesso;
+
 public class CategoriaController {
 
   private Categoria categoriaSelecionada;
@@ -114,14 +117,6 @@ public class CategoriaController {
   private void limparFormulario() {
     categoriaSelecionada = null;
     campoNomeCategoria.clear();
-  }
-
-  private void mostrarErro(String mensagem) {
-    new Alert(Alert.AlertType.ERROR, mensagem).showAndWait();
-  }
-
-  private void mostrarSucesso(String mensagem) {
-    new Alert(Alert.AlertType.INFORMATION, mensagem).showAndWait();
   }
 
   private void carregarDadosTabela() throws JsonProcessingException {
