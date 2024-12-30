@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.eduardo.sistemadistribuido.servidor.controller.VisualizarUsuarioController">
+
+    <center>
+        <TableView fx:id="tabelaUsuarios" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colunaRA" prefWidth="200.0" text="RA" />
+                <TableColumn fx:id="colunaNome" prefWidth="300.0" text="NOME" />
+                <TableColumn fx:id="colunaSenha" prefWidth="300.0" text="SENHA" />
+                <TableColumn fx:id="colunaExcluir" prefWidth="100.0" text="Ação" />
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

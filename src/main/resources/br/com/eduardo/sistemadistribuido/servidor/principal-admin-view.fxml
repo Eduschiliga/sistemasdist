@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane
+        fx:id="principal"
+        maxHeight="-Infinity"
+        maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        prefHeight="625.0"
+        prefWidth="900.0"
+        xmlns="http://javafx.com/javafx/22"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="br.com.eduardo.sistemadistribuido.servidor.controller.PrincipalAdminController">
+    <top>
+        <MenuBar prefHeight="2.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <Menu mnemonicParsing="false" text="Principal">
+                <MenuItem mnemonicParsing="false" onAction="#visualizar" text="Home"/>
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="Visualizar">
+                <MenuItem mnemonicParsing="false" onAction="#localizarUsuario" text="Usuários"/>
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="Cadastrar">
+                <MenuItem mnemonicParsing="false" onAction="#cadastrarCategoria" text="Categoria"/>
+            </Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

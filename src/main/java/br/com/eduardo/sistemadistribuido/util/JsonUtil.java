@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.util.List;
 
 public class JsonUtil {
 
@@ -12,10 +13,6 @@ public class JsonUtil {
 
   public static <T> String serialize(T obj) throws JsonProcessingException {
     return objectMapper.writeValueAsString(obj);
-  }
-
-  public static <T> T deserialize(String json, Class<T> clazz) throws IOException {
-    return objectMapper.readValue(json, clazz);
   }
 
   public static JsonNode readTree(String json) throws IOException {

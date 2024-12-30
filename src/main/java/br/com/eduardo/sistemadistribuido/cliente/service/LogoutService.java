@@ -1,4 +1,4 @@
-package br.com.eduardo.sistemadistribuido.service;
+package br.com.eduardo.sistemadistribuido.cliente.service;
 
 import br.com.eduardo.sistemadistribuido.cliente.ClienteApplication;
 import br.com.eduardo.sistemadistribuido.model.request.LogoutRequest;

@@ -1,16 +1,19 @@
 package br.com.eduardo.sistemadistribuido.repository;
 
 import br.com.eduardo.sistemadistribuido.entity.Usuario;
-import br.com.eduardo.sistemadistribuido.model.dto.UsuarioDTO;
 import lombok.*;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class UsuarioRepository {
   private EntityManager entityManager;
+
+  public UsuarioRepository(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
 
   public void cadastrar(Usuario usuario) {
     try {
@@ -35,11 +38,23 @@ public class UsuarioRepository {
         .getSingleResult();
   }
 
-  public EntityManager getEntityManager() {
-    return entityManager;
+  public void deletar(Usuario usuario) {
+    entityManager.getTransaction().begin();
+
+    if (!entityManager.contains(usuario)) {
+      usuario = entityManager.merge(usuario);
+    }
+    entityManager.remove(usuario);
+
+    entityManager.getTransaction().commit();
   }
 
-  public void setEntityManager(EntityManager entityManager) {
-    this.entityManager = entityManager;
+  public void atualizar(Usuario usuario) {
+    entityManager.merge(usuario);
+  }
+
+  public List<Usuario> buscarTodos() {
+    return entityManager.createQuery("SELECT a FROM Usuario a", Usuario.class)
+        .getResultList();
   }
 }

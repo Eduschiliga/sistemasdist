@@ -9,9 +9,9 @@ module br.com.eduardo.sistemadistribuido {
   requires com.sun.istack.runtime;
   requires java.sql;
   requires org.hibernate.orm.core;
+  requires javafx.base;
 
-  opens br.com.eduardo.sistemadistribuido.entity to org.hibernate.orm.core;
-
+  opens br.com.eduardo.sistemadistribuido.entity to org.hibernate.orm.core, javafx.base, com.fasterxml.jackson.databind;
   opens br.com.eduardo.sistemadistribuido.model.dto to org.hibernate.orm.core;
 
   exports br.com.eduardo.sistemadistribuido.model.response to com.fasterxml.jackson.databind;
@@ -37,5 +37,8 @@ module br.com.eduardo.sistemadistribuido {
 
   opens br.com.eduardo.sistemadistribuido.model.request to javafx.fxml;
   exports br.com.eduardo.sistemadistribuido.model.request;
+
+  opens br.com.eduardo.sistemadistribuido.servidor.service to javafx.fxml;
+  exports br.com.eduardo.sistemadistribuido.servidor.service;
 
 }

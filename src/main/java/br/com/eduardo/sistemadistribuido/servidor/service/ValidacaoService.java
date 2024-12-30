@@ -1,4 +1,4 @@
-package br.com.eduardo.sistemadistribuido.service;
+package br.com.eduardo.sistemadistribuido.servidor.service;
 
 import java.util.regex.Pattern;
 

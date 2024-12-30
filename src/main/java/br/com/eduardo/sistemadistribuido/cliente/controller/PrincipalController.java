@@ -1,6 +1,6 @@
 package br.com.eduardo.sistemadistribuido.cliente.controller;
 
-import br.com.eduardo.sistemadistribuido.service.LogoutService;
+import br.com.eduardo.sistemadistribuido.cliente.service.LogoutService;
 import br.com.eduardo.sistemadistribuido.util.AlertUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,8 +17,6 @@ public class PrincipalController {
   private Parent fxmlVincularAviso;
   private Parent fxmlVisualizarAviso;
 
-  @FXML
-  private ResourceBundle resources;
 
   @FXML
   private BorderPane principal;

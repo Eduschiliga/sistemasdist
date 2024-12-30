@@ -1,7 +1,6 @@
 package br.com.eduardo.sistemadistribuido.servidor;
 
 import br.com.eduardo.sistemadistribuido.servidor.handler.RequestHandler;
-import lombok.NoArgsConstructor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +10,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-@NoArgsConstructor
 public class ServerApplication extends Thread {
   protected Socket clientSocket;
+
+  public ServerApplication() {
+  }
+
+  private ServerApplication(Socket clientSoc) {
+    this.clientSocket = clientSoc;
+    start();
+  }
 
   public static void main(String[] args) {
     try {
@@ -55,11 +61,6 @@ public class ServerApplication extends Thread {
         System.err.println("Não foi possível fechar a porta: 10008. Erro: " + e.getMessage());
       }
     }
-  }
-
-  private ServerApplication(Socket clientSoc) {
-    this.clientSocket = clientSoc;
-    start();
   }
 
   public void run() {

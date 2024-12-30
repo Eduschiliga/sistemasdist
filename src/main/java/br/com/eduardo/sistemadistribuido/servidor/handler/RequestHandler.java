@@ -7,7 +7,7 @@ import br.com.eduardo.sistemadistribuido.model.response.LoginSucessoResponse;
 import br.com.eduardo.sistemadistribuido.model.response.MensagemOperacaoResponse;
 import br.com.eduardo.sistemadistribuido.model.response.MensagemStatusResponse;
 import br.com.eduardo.sistemadistribuido.repository.UsuarioRepository;
-import br.com.eduardo.sistemadistribuido.service.ValidacaoService;
+import br.com.eduardo.sistemadistribuido.servidor.service.ValidacaoService;
 import br.com.eduardo.sistemadistribuido.util.JPAUtil;
 import br.com.eduardo.sistemadistribuido.util.JsonUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;

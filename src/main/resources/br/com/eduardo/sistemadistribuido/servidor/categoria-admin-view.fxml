@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.eduardo.sistemadistribuido.servidor.controller.CategoriaController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER" BorderPane.alignment="CENTER">
+            <Label text="Nome da Categoria:"/>
+            <TextField fx:id="campoNomeCategoria" promptText="Digite o nome da categoria"/>
+            <Button fx:id="botaoSalvar" text="Salvar" onAction="#salvarCategoria"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tabelaCategorias" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colunaId" prefWidth="200.0" text="ID" />
+                <TableColumn fx:id="colunaNome" prefWidth="300.0" text="NOME" />
+                <TableColumn fx:id="colunaExcluir" prefWidth="100.0" text="Ação" />
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

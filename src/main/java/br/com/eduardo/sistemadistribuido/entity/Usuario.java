@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -32,4 +30,36 @@ public class Usuario {
   @Column(name = "senha_usuario")
   @NotNull(message = "A senha é obrigatória")
   private String senha;
+
+  public String getRa() {
+    return ra;
+  }
+
+  public void setRa(String ra) {
+    this.ra = ra;
+  }
+
+  public Boolean getAdmin() {
+    return isAdmin;
+  }
+
+  public void setAdmin(Boolean admin) {
+    isAdmin = admin;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public String getSenha() {
+    return senha;
+  }
+
+  public void setSenha(String senha) {
+    this.senha = senha;
+  }
 }
