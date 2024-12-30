@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import java.util.Optional;
 
 import static br.com.eduardo.sistemadistribuido.cliente.ClienteApplication.socket;
+import static java.lang.System.exit;
 
 public class AlertUtil {
 
@@ -65,7 +66,7 @@ public class AlertUtil {
       Optional<String[]> resultado = mostrarDialogoConexao();
 
       if (resultado.isEmpty()) {
-        System.exit(0);
+        exit(0);
       }
 
       String[] dados = resultado.get();

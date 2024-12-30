@@ -1,11 +1,11 @@
 package br.com.eduardo.sistemadistribuido.repository;
 
 import br.com.eduardo.sistemadistribuido.entity.Usuario;
+import br.com.eduardo.sistemadistribuido.model.dto.UsuarioDTO;
 import lombok.*;
 
 import javax.persistence.EntityManager;
 
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -33,5 +33,13 @@ public class UsuarioRepository {
         .setParameter("ra", ra)
         .setParameter("senha", senha)
         .getSingleResult();
+  }
+
+  public EntityManager getEntityManager() {
+    return entityManager;
+  }
+
+  public void setEntityManager(EntityManager entityManager) {
+    this.entityManager = entityManager;
   }
 }
