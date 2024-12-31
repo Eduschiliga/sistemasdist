@@ -3,6 +3,8 @@ package br.com.eduardo.sistemadistribuido.servidor.handler;
 import br.com.eduardo.sistemadistribuido.entity.Usuario;
 import br.com.eduardo.sistemadistribuido.model.dto.UsuarioDTO;
 import br.com.eduardo.sistemadistribuido.model.dto.UsuarioSemAdminDTO;
+import br.com.eduardo.sistemadistribuido.model.request.EditarUsuarioRequest;
+import br.com.eduardo.sistemadistribuido.model.request.ExcluirUsuarioRequest;
 import br.com.eduardo.sistemadistribuido.model.request.LocalizarUsuarioRequest;
 import br.com.eduardo.sistemadistribuido.model.response.LocalizarUsuarioResponse;
 import br.com.eduardo.sistemadistribuido.model.response.MensagemOperacaoResponse;
@@ -20,11 +22,63 @@ import java.util.List;
 
 public class UsuarioHandler {
   public static String handleEditarUsuario(JsonNode jsonNode) throws JsonProcessingException {
-    return "";
+    EntityManager entityManager = JPAUtil.getEntityManagerFactory();
+    UsuarioRepository usuarioRepository = new UsuarioRepository(entityManager);
+
+    try {
+      EditarUsuarioRequest editarUsuarioRequest = JsonUtil.treeToValue(jsonNode, EditarUsuarioRequest.class);
+      Usuario usuario = usuarioRepository.buscarPorRa(editarUsuarioRequest.getUsuario().getRa());
+
+      if (usuario != null) {
+        usuario.setNome(editarUsuarioRequest.getUsuario().getNome());
+        usuario.setSenha(editarUsuarioRequest.getUsuario().getSenha());
+
+        usuarioRepository.atualizar(usuario);
+
+        MensagemOperacaoResponse response = new MensagemOperacaoResponse();
+
+        response.setOperacao("editarUsuario");
+        response.setStatus(201);
+        response.setMensagem("Usuário editado com sucesso!");
+
+        return JsonUtil.serialize(response);
+      } else {
+        throw new NoResultException();
+      }
+    } catch (NoResultException e) {
+      return createErrorResponse("Ra não encontrado!", 401, "editarUsuario");
+    } catch (JsonProcessingException e) {
+      return createErrorResponse("Erro ao processar json", 401, "editarUsuario");
+    }
   }
 
   public static String handleExcluirUsuario(JsonNode jsonNode) throws JsonProcessingException {
-    return "";
+    EntityManager entityManager = JPAUtil.getEntityManagerFactory();
+    UsuarioRepository usuarioRepository = new UsuarioRepository(entityManager);
+
+    try {
+      ExcluirUsuarioRequest editarUsuarioRequest = JsonUtil.treeToValue(jsonNode, ExcluirUsuarioRequest.class);
+      Usuario usuario = usuarioRepository.buscarPorRa(editarUsuarioRequest.getRa());
+
+      if (usuario != null) {
+
+        usuarioRepository.deletar(usuario);
+
+        MensagemOperacaoResponse response = new MensagemOperacaoResponse();
+
+        response.setOperacao("excluirUsuario");
+        response.setStatus(201);
+        response.setMensagem("Usuário excluído com sucesso!");
+
+        return JsonUtil.serialize(response);
+      } else {
+        throw new NoResultException();
+      }
+    } catch (NoResultException e) {
+      return createErrorResponse("Ra não encontrado!", 401, "excluirUsuario");
+    } catch (JsonProcessingException e) {
+      return createErrorResponse("Erro ao processar json", 401, "excluirUsuario");
+    }
   }
 
   public static String handlelocalizarUsuario(JsonNode jsonNode) throws JsonProcessingException {

@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.eduardo.sistemadistribuido.cliente.controller.UsuarioController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.com.eduardo.sistemadistribuido.cliente.controller.UsuarioController">
     <center>
-        <VBox prefHeight="100.0" prefWidth="291.0" BorderPane.alignment="CENTER">
-            <Label text="Usuario">
+        <VBox prefHeight="100.0" prefWidth="291.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <Label text="Detalhes do Usuário">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font name="System Bold" size="14.0"/>
                 </font>
-                <Label fx:id="mensagenErro" layoutX="150.0" layoutY="50.0" prefHeight="30.0" prefWidth="300.0" style="-fx-font-weight: bold;" textFill="red" />
             </Label>
+            <Label fx:id="mensagenErro" textFill="red"/>
+
+            <Label text="RA:"/>
+            <TextField fx:id="inputRa" editable="false" promptText="RA do usuário"/>
+
+            <Label text="Nome:"/>
+            <TextField fx:id="inputNome" promptText="Informe o nome do usuário"/>
+
+            <Label text="Senha:"/>
+            <PasswordField fx:id="inputSenha" promptText="Informe uma nova senha"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="botaoSalvar" text="Salvar" onAction="#salvarUsuario"/>
+                <Button fx:id="botaoExcluir" text="Excluir" onAction="#excluirUsuario"/>
+            </HBox>
         </VBox>
     </center>
-   <top>
-      <Pane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </top>
-   <left>
-      <Pane prefHeight="358.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <Pane prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Pane prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </bottom>
+    <top>
+        <Pane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>
+    </top>
+    <left>
+        <Pane prefHeight="358.0" prefWidth="30.0" BorderPane.alignment="CENTER"/>
+    </left>
+    <right>
+        <Pane prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER"/>
+    </right>
+    <bottom>
+        <Pane prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+    </bottom>
 </BorderPane>

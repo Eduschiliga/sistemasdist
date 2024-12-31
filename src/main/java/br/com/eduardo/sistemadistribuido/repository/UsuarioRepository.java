@@ -50,7 +50,9 @@ public class UsuarioRepository {
   }
 
   public void atualizar(Usuario usuario) {
+    entityManager.getTransaction().begin();
     entityManager.merge(usuario);
+    entityManager.getTransaction().commit();
   }
 
   public List<Usuario> buscarTodos() {

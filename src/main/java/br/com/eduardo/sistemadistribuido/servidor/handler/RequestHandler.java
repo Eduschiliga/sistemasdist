@@ -15,21 +15,26 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.io.IOException;
 
-import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.handleRegisterUser;
-import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.handlelocalizarUsuario;
+import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.*;
 
 public class RequestHandler {
   public String processRequest(String inputLine) throws IOException {
     JsonNode jsonNode = JsonUtil.readTree(inputLine);
     String operacao = jsonNode.get("operacao").asText();
 
-    return switch (operacao) {
+    String jsonEnviado = switch (operacao) {
       case "cadastrarUsuario" -> handleRegisterUser(jsonNode);
-      case "login" -> handleLogin(jsonNode);
+      case "excluirUsuario" -> handleExcluirUsuario(jsonNode);
+      case "editarUsuario" -> handleEditarUsuario(jsonNode);
       case "localizarUsuario" -> handlelocalizarUsuario(jsonNode);
+      case "login" -> handleLogin(jsonNode);
       case "logout" -> handleLogout();
       default -> createErrorResponse(operacao);
     };
+
+    System.out.println("Json enviado: " + jsonEnviado);
+
+    return jsonEnviado;
   }
 
   private String handleLogin(JsonNode jsonNode) throws JsonProcessingException {
