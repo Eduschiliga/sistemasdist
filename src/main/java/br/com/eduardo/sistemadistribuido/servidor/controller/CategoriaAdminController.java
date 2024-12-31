@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 import static br.com.eduardo.sistemadistribuido.util.AlertUtil.mostrarErro;
 import static br.com.eduardo.sistemadistribuido.util.AlertUtil.mostrarSucesso;
 
-public class CategoriaController {
+public class CategoriaAdminController {
 
   private Categoria categoriaSelecionada;
   private final EntityManager entityManager = JPAUtil.getEntityManagerFactory();

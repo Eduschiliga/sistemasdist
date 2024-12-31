@@ -16,6 +16,7 @@ import javax.persistence.NoResultException;
 import java.io.IOException;
 
 import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.*;
+import static br.com.eduardo.sistemadistribuido.servidor.handler.CategoriaHandler.*;
 
 public class RequestHandler {
   public String processRequest(String inputLine) throws IOException {
@@ -24,6 +25,8 @@ public class RequestHandler {
 
     String jsonEnviado = switch (operacao) {
       case "cadastrarUsuario" -> handleRegisterUser(jsonNode);
+      case "localizarCategoria" -> handleLocalizarCategoria(jsonNode);
+      case "pesquisarCategorias" -> handlePesquisarCategorias(jsonNode);
       case "excluirUsuario" -> handleExcluirUsuario(jsonNode);
       case "editarUsuario" -> handleEditarUsuario(jsonNode);
       case "localizarUsuario" -> handlelocalizarUsuario(jsonNode);

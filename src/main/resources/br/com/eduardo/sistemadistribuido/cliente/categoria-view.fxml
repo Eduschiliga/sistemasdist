@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.com.eduardo.sistemadistribuido.cliente.controller.CategoriaController">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER" BorderPane.alignment="CENTER">
+            <Label text="Categorias Disponíveis"/>
+            <Label fx:id="mensagenErro" textFill="red"/>
+<!--            <TextField fx:id="campoNomeCategoria" editable="false"/>-->
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tabelaCategorias" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colunaId" prefWidth="200.0" text="ID"/>
+                <TableColumn fx:id="colunaNome" prefWidth="300.0" text="NOME"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

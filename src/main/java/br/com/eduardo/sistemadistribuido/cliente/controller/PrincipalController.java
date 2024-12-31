@@ -28,6 +28,11 @@ public class PrincipalController {
   }
 
   @FXML
+  void visualizarCategoria(ActionEvent event) throws IOException {
+    setTela("PesquisarCategorias");
+  }
+
+  @FXML
   void visualizarUsuario(ActionEvent event) throws IOException {
     setTela("VisualizarUsuario");
   }
@@ -79,6 +84,16 @@ public class PrincipalController {
           principal.setCenter(fxmlVisualizarUsuario);
         } else {
           AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarUsuario' não carregada.");
+        }
+        break;
+
+      case "PesquisarCategorias":
+        Parent fxmlPesquisarCategoria = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/categoria-view.fxml")));
+
+        if (fxmlPesquisarCategoria != null) {
+          principal.setCenter(fxmlPesquisarCategoria);
+        } else {
+          AlertUtil.alert("Erro", "Erro", "Tela 'PesquisarCategorias' não carregada.");
         }
         break;
     }

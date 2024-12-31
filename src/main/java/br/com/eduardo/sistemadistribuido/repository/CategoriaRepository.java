@@ -31,6 +31,10 @@ public class CategoriaRepository {
     }
   }
 
+  public Categoria buscarPorId(long id) {
+    return entityManager.find(Categoria.class, id);
+  }
+
   public Categoria buscarPorNome(String nome) {
     return entityManager.createQuery("SELECT a FROM Categoria a WHERE a.nome = :nome", Categoria.class)
         .setParameter("nome", nome)
