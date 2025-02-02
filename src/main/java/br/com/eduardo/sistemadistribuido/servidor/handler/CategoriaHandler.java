@@ -27,18 +27,18 @@ public class CategoriaHandler {
       if (categoriaList != null) {
         BuscarCategoriasResponse response = new BuscarCategoriasResponse();
 
-        response.setOperacao("pesquisarCategorias");
+        response.setOperacao("listarCategorias");
         response.setStatus(201);
-        response.setListacategorias(categoriaList);
+        response.setCategorias(categoriaList);
 
         return JsonUtil.serialize(response);
       } else {
         throw new NoResultException();
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Ra não encontrado!", "pesquisarCategorias");
+      return createErrorResponse("Ra não encontrado!", "listarCategorias");
     } catch (JsonProcessingException e) {
-      return createErrorResponse("Erro ao processar json", "pesquisarCategorias");
+      return createErrorResponse("Erro ao processar json", "listarCategorias");
     }
   }
 

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class AdminApplication extends Application {
-  public static String token = "123";
+  public static String token = "9999999";
   private static Stage stage;
 
   @Override

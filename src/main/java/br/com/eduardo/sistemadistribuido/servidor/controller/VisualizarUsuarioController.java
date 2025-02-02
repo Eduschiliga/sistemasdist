@@ -49,8 +49,8 @@ public class VisualizarUsuarioController {
   private void carregarDadosTabela() throws JsonProcessingException {
     System.out.println("""
         {
-          "operacao": "localizarUsuario"
-          "token": "123"
+          "operacao": "listarUsuarios"
+          "token": "9999999"
         }
         """);
 
@@ -62,8 +62,8 @@ public class VisualizarUsuarioController {
     System.out.printf("""
         {
           "status": 200,
-          "operacao": "localizarUsuario",
-          "listaUsuarios": %s
+          "operacao": "listarUsuarios",
+          "usuarios": %s
         }
         %n""", JsonUtil.serialize(usuarios));;
 
@@ -108,16 +108,26 @@ public class VisualizarUsuarioController {
 
   private void excluirUsuario(Usuario usuario) {
     try {
+      System.out.printf(
+      """  
+      {
+         "operacao": "excluirUsuario",
+         "token":  "9999999",
+         "ra": "%s",
+      }
+      """, usuario.getRa());
+
       usuarioRepository.deletar(usuario);
       tabelaUsuarios.getItems().remove(usuario);
 
-      System.out.printf("""
-            {
-              "status": 200,
-              "operacao": "excluirUsuario",
-              "usuario": "%s"
-            }
-            %n""", JsonUtil.serialize(usuario));
+      System.out.println(
+      """
+      {
+         "status": 200,
+         "operacao": "excluirUsuario",
+         "usuario": "Exclusão realizada com sucesso"
+      }
+      """);
     } catch (Exception e) {
       e.printStackTrace();
     }

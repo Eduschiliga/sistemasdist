@@ -7,7 +7,7 @@ import java.util.List;
 public class BuscarCategoriasResponse {
   private int status;
   private String operacao;
-  private List<Categoria> listacategorias;
+  private List<Categoria> categorias;
 
   public int getStatus() {
     return status;
@@ -25,11 +25,11 @@ public class BuscarCategoriasResponse {
     this.operacao = operacao;
   }
 
-  public List<Categoria> getListacategorias() {
-    return listacategorias;
+  public List<Categoria> getCategorias() {
+    return categorias;
   }
 
-  public void setListacategorias(List<Categoria> listacategorias) {
-    this.listacategorias = listacategorias;
+  public void setCategorias(List<Categoria> categorias) {
+    this.categorias = categorias;
   }
 }

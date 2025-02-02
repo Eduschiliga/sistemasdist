@@ -20,11 +20,13 @@
             </Menu>
 
             <Menu mnemonicParsing="false" text="Visualizar">
+                <MenuItem mnemonicParsing="false" onAction="#visualizarPerfil" text="Perfil"/>
                 <MenuItem mnemonicParsing="false" onAction="#localizarUsuario" text="Usuários"/>
             </Menu>
 
             <Menu mnemonicParsing="false" text="Cadastrar">
                 <MenuItem mnemonicParsing="false" onAction="#cadastrarCategoria" text="Categoria"/>
+                <MenuItem mnemonicParsing="false" onAction="#cadastrarAviso" text="Aviso"/>
             </Menu>
         </MenuBar>
     </top>

@@ -26,7 +26,7 @@ public class RequestHandler {
     String jsonEnviado = switch (operacao) {
       case "cadastrarUsuario" -> handleRegisterUser(jsonNode);
       case "localizarCategoria" -> handleLocalizarCategoria(jsonNode);
-      case "pesquisarCategorias" -> handlePesquisarCategorias(jsonNode);
+      case "listarCategorias" -> handlePesquisarCategorias(jsonNode);
       case "excluirUsuario" -> handleExcluirUsuario(jsonNode);
       case "editarUsuario" -> handleEditarUsuario(jsonNode);
       case "localizarUsuario" -> handlelocalizarUsuario(jsonNode);

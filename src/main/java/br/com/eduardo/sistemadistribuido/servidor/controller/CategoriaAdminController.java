@@ -43,17 +43,15 @@ public class CategoriaAdminController {
       Categoria novaCategoria;
 
       System.out.printf("""
-                SALVAR CATEGORIA (ADMIN)
-                C->S
-                {
-                    "operacao": "salvarCategoria",
-                    "token": "123",
-                    "categoria": {
-                        "id": %d,
-                        "nome": "%s"
-                    }
-                }
-                %n""", categoriaSelecionada != null ? categoriaSelecionada.getCategoriaId() : 0, nomeCategoria);
+          {
+              "operacao": "salvarCategoria",
+              "token": "123",
+              "categoria": {
+                  "id": %d,
+                  "nome": "%s"
+              }
+          }
+          %n""", categoriaSelecionada != null ? categoriaSelecionada.getCategoriaId() : 0, nomeCategoria);
 
       if (categoriaSelecionada == null) {
         novaCategoria = new Categoria();
@@ -80,14 +78,12 @@ public class CategoriaAdminController {
   private void excluirCategoria(Categoria categoria) {
     try {
       System.out.printf("""
-                EXCLUIR CATEGORIA (ADMIN)
-                C->S
-                {
-                    "operacao": "excluirCategoria",
-                    "token": "123",
-                    "id": %d
-                }
-                %n""", categoria.getCategoriaId());
+          {
+              "operacao": "excluirCategoria",
+              "token": "123",
+              "id": %d
+          }
+          %n""", categoria.getCategoriaId());
 
       categoriaRepository.deletar(categoria);
       tabelaCategorias.getItems().remove(categoria);
@@ -120,7 +116,26 @@ public class CategoriaAdminController {
   }
 
   private void carregarDadosTabela() throws JsonProcessingException {
+    System.out.print(
+        """
+            {
+                "operacao": "listarCategorias",
+                "token": "9999999"
+            }
+            """
+    );
+
     tabelaCategorias.setItems(FXCollections.observableArrayList(categoriaRepository.buscarTodos()));
+
+    System.out.printf(
+        """
+            {
+                "operacao": "listarCategorias",
+                "token": "9999999",
+                categorias: %s
+            }
+            """, tabelaCategorias.getItems()
+    );
   }
 
   private void adicionarColunaExcluir() {
@@ -152,13 +167,11 @@ public class CategoriaAdminController {
 
   private void logResposta(String operacao, int status, String mensagem) {
     System.out.printf("""
-            %s (ADMIN)
-            S->C
-            {
-                "status": %d,
-                "operacao": "%s",
-                "mensagem": "%s"
-            }
-            %n""", operacao.toUpperCase(), status, operacao, mensagem);
+        {
+            "status": %d,
+            "operacao": "%s",
+            "mensagem": "%s"
+        }
+        """, status, operacao, mensagem);
   }
 }

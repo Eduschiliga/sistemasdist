@@ -83,7 +83,7 @@ public class CategoriaController {
   public void pesquisarCategoria() throws IOException {
     OperacaoTokenRequest operacaoTokenRequest = new OperacaoTokenRequest();
 
-    operacaoTokenRequest.setOperacao("pesquisarCategorias");
+    operacaoTokenRequest.setOperacao("listarCategorias");
 
     String json = JsonUtil.serialize(operacaoTokenRequest);
     String retorno = SocketManager.enviarSocket(json);
@@ -98,7 +98,7 @@ public class CategoriaController {
       case 201:
         BuscarCategoriasResponse buscarCategoriasResponse = JsonUtil.treeToValue(jsonNode, BuscarCategoriasResponse.class);
 
-        List<Categoria> categoriaList = buscarCategoriasResponse.getListacategorias();
+        List<Categoria> categoriaList = buscarCategoriasResponse.getCategorias();
 
         carregarDadosTabela(categoriaList);
         break;

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.com.eduardo.sistemadistribuido.servidor.controller.AvisoAdminController">
+
+    <top>
+        <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+            <Label text="Título:"/>
+            <TextField fx:id="campoTituloAviso" promptText="Digite o nome do Aviso"/>
+
+            <Label text="Descrição:"/>
+            <TextField fx:id="campoDescricaoAviso" promptText="Digite a descrição do Aviso"/>
+
+            <Label text="Categoria:"/>
+            <ComboBox prefWidth="150.0"  fx:id="campoCategoriaAviso"  promptText="Selecione a categoria"/>
+
+            <Button fx:id="botaoSalvar" onAction="#salvarAviso" text="Salvar"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tabelaAvisos" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colunaId" prefWidth="200.0" text="ID"/>
+                <TableColumn fx:id="colunaNome" prefWidth="300.0" text="NOME"/>
+                <TableColumn fx:id="colunaDescricao" prefWidth="300.0" text="DESCRICAO"/>
+                <TableColumn fx:id="colunaNomeCategoria" prefWidth="300.0" text="CATEGORIA"/>
+                <TableColumn fx:id="colunaExcluir" prefWidth="100.0" text="Ação"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>
