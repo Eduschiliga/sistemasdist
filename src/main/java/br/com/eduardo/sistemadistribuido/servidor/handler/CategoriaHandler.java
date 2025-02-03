@@ -36,7 +36,7 @@ public class CategoriaHandler {
         throw new NoResultException();
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Ra não encontrado!", "listarCategorias");
+      return createErrorResponse("Ra nao encontrado!", "listarCategorias");
     } catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar json", "listarCategorias");
     }
@@ -62,7 +62,7 @@ public class CategoriaHandler {
         throw new NoResultException();
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Categoria não encontrada!", "localizarCategoria");
+      return createErrorResponse("Categoria nao encontrada!", "localizarCategoria");
     } catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar json", "localizarCategoria");
     }

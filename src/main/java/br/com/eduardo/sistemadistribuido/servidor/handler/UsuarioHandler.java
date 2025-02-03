@@ -39,14 +39,14 @@ public class UsuarioHandler {
 
         response.setOperacao("editarUsuario");
         response.setStatus(201);
-        response.setMensagem("Usuário editado com sucesso!");
+        response.setMensagem("Usuario editado com sucesso!");
 
         return JsonUtil.serialize(response);
       } else {
         throw new NoResultException();
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Ra não encontrado!", 401, "editarUsuario");
+      return createErrorResponse("Ra nao encontrado!", 401, "editarUsuario");
     } catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar json", 401, "editarUsuario");
     }
@@ -68,14 +68,14 @@ public class UsuarioHandler {
 
         response.setOperacao("excluirUsuario");
         response.setStatus(201);
-        response.setMensagem("Usuário excluído com sucesso!");
+        response.setMensagem("Usuário excluido com sucesso!");
 
         return JsonUtil.serialize(response);
       } else {
         throw new NoResultException();
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Ra não encontrado!", 401, "excluirUsuario");
+      return createErrorResponse("Ra nao encontrado!", 401, "excluirUsuario");
     } catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar json", 401, "excluirUsuario");
     }
@@ -105,7 +105,7 @@ public class UsuarioHandler {
         throw new NoResultException();
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Ra não encontrado!", 401, "localizarUsuario");
+      return createErrorResponse("Ra nao encontrado!", 401, "localizarUsuario");
     } catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar json", 401, "localizarUsuario");
     }
@@ -131,7 +131,7 @@ public class UsuarioHandler {
       usuarioRepository.cadastrar(usuarioEntity);
       entityManager.getTransaction().commit();
 
-      response.setMensagem("Usuário cadastrado com sucesso!");
+      response.setMensagem("Usuario cadastrado com sucesso!");
       response.setStatus(201);
     } catch (IllegalArgumentException e) {
       response.setMensagem("Erro ao cadastrar: " + e.getMessage());
@@ -140,7 +140,7 @@ public class UsuarioHandler {
       if (entityManager.getTransaction().isActive()) {
         entityManager.getTransaction().rollback();
       }
-      response.setMensagem("Erro ao cadastrar usuário");
+      response.setMensagem("Erro ao cadastrar usuario");
       response.setStatus(500);
     }
 
@@ -167,7 +167,7 @@ public class UsuarioHandler {
 
 
   private static String createErrorResponse(String operacao) throws JsonProcessingException {
-    return createErrorResponse("Operação desconhecida", 400, operacao);
+    return createErrorResponse("Operacao desconhecida", 400, operacao);
   }
 
   private static String createErrorResponse(String mensagem, int status, String operacao) throws JsonProcessingException {
