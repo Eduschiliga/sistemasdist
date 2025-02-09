@@ -74,7 +74,7 @@ public class AvisoAdminController {
                    "descricao": "%s"
                 }
             }
-            """, categoriaAviso.getCategoriaId(), avisoSelecionado.getCategoria(), avisoSelecionado.getDescricao()
+            """, categoriaAviso.getId(), avisoSelecionado.getCategoria(), avisoSelecionado.getDescricao()
         );
 
         Aviso novoAviso = new Aviso();

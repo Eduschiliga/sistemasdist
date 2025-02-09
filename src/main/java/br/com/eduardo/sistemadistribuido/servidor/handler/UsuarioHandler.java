@@ -97,7 +97,7 @@ public class UsuarioHandler {
         usuarioSemAdminDTO.setRa(usuario.getRa());
         usuarioSemAdminDTO.setSenha(usuario.getSenha());
 
-        response.setStatus(200);
+        response.setStatus(201);
         response.setUsuario(usuarioSemAdminDTO);
 
         return JsonUtil.serialize(response);

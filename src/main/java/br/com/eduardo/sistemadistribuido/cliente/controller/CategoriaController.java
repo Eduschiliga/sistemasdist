@@ -39,7 +39,7 @@ public class CategoriaController {
   private TableColumn<Categoria, Void> colunaExcluir;
 
   public void initialize() throws IOException {
-    colunaId.setCellValueFactory(new PropertyValueFactory<>("categoriaId"));
+    colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
     colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
     pesquisarCategoria();

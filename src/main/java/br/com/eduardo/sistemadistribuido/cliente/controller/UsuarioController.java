@@ -60,7 +60,7 @@ public class UsuarioController {
     JsonNode jsonNode = JsonUtil.readTree(retorno);
 
     switch (jsonNode.get("status").intValue()) {
-      case 200:
+      case 201:
         mensagenErro.setVisible(false);
         LocalizarUsuarioResponse localizarUsuarioResponse = JsonUtil.treeToValue(jsonNode, LocalizarUsuarioResponse.class);
         UsuarioSemAdminDTO usuarioSemAdmin = localizarUsuarioResponse.getUsuario();

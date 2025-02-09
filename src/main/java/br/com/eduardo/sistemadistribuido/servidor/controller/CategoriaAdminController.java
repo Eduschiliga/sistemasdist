@@ -51,7 +51,7 @@ public class CategoriaAdminController {
                   "nome": "%s"
               }
           }
-          %n""", categoriaSelecionada != null ? categoriaSelecionada.getCategoriaId() : 0, nomeCategoria);
+          %n""", categoriaSelecionada != null ? categoriaSelecionada.getId() : 0, nomeCategoria);
 
       if (categoriaSelecionada == null) {
         novaCategoria = new Categoria();
@@ -83,7 +83,7 @@ public class CategoriaAdminController {
               "token": "123",
               "id": %d
           }
-          %n""", categoria.getCategoriaId());
+          %n""", categoria.getId());
 
       categoriaRepository.deletar(categoria);
       tabelaCategorias.getItems().remove(categoria);
