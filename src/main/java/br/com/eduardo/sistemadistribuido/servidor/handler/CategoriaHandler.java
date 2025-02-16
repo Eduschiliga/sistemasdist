@@ -46,7 +46,7 @@ public class CategoriaHandler {
     try {
       LocalizarCategoriaRequest localizarCategoriaRequest = JsonUtil.treeToValue(jsonNode, LocalizarCategoriaRequest.class);
 
-      long id = localizarCategoriaRequest.getId();
+      Integer id = localizarCategoriaRequest.getId();
 
       Categoria categoria = categoriaRepository.buscarPorId(id);
 

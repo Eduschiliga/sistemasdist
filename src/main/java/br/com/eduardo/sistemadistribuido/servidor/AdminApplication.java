@@ -1,7 +1,6 @@
 package br.com.eduardo.sistemadistribuido.servidor;
 
 
-import br.com.eduardo.sistemadistribuido.util.SocketManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -3,7 +3,6 @@ package br.com.eduardo.sistemadistribuido.servidor.controller;
 import br.com.eduardo.sistemadistribuido.entity.Categoria;
 import br.com.eduardo.sistemadistribuido.repository.CategoriaRepository;
 import br.com.eduardo.sistemadistribuido.util.JPAUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -45,7 +44,7 @@ public class CategoriaAdminController {
       System.out.printf("""
           {
               "operacao": "salvarCategoria",
-              "token": "123",
+              "token": "99999",
               "categoria": {
                   "id": %d,
                   "nome": "%s"
@@ -80,7 +79,7 @@ public class CategoriaAdminController {
       System.out.printf("""
           {
               "operacao": "excluirCategoria",
-              "token": "123",
+              "token": "99999",
               "id": %d
           }
           %n""", categoria.getId());
@@ -94,9 +93,9 @@ public class CategoriaAdminController {
   }
 
 
-  public void initialize() throws JsonProcessingException {
+  public void initialize() {
     categoriaRepository = new CategoriaRepository(JPAUtil.getEntityManagerFactory());
-    colunaId.setCellValueFactory(new PropertyValueFactory<>("categoriaId"));
+    colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
     colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
     tabelaCategorias.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
@@ -115,7 +114,7 @@ public class CategoriaAdminController {
     campoNomeCategoria.clear();
   }
 
-  private void carregarDadosTabela() throws JsonProcessingException {
+  private void carregarDadosTabela() {
     System.out.print(
         """
             {

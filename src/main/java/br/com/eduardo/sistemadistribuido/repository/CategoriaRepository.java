@@ -31,7 +31,7 @@ public class CategoriaRepository {
     }
   }
 
-  public Categoria buscarPorId(long id) {
+  public Categoria buscarPorId(Integer id) {
     return entityManager.find(Categoria.class, id);
   }
 

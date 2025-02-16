@@ -1,6 +1,5 @@
 package br.com.eduardo.sistemadistribuido.servidor.controller;
 
-import br.com.eduardo.sistemadistribuido.cliente.ClienteApplication;
 import br.com.eduardo.sistemadistribuido.entity.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,27 +29,27 @@ public class UsuarioAdminController {
 
   private void printarRequisicao() {
     String json = """
-      {
-          "operacao": "localizarUsuario",
-          "token":  "9999999",
-          "ra": "9999999"
-      }
-   """;
+           {
+               "operacao": "localizarUsuario",
+               "token":  "9999999",
+               "ra": "9999999"
+           }
+        """;
     System.out.println(json);
   }
 
   private void printarUsuario() {
     String json = """
-      {
-        "status": 201,
-        "operacao": "localizarUsuario",
-        "usuario": {
-           "ra": "9999999",
-           "senha": "USERADMIN123",
-           "nome": "USER ADMIN"
-        }
-      }
-    """;
+          {
+            "status": 201,
+            "operacao": "localizarUsuario",
+            "usuario": {
+               "ra": "9999999",
+               "senha": "USERADMIN123",
+               "nome": "USER ADMIN"
+            }
+          }
+        """;
     System.out.println(json);
   }
 
@@ -69,10 +68,5 @@ public class UsuarioAdminController {
     inputRa.setText(usuario.getRa());
     inputNome.setText(usuario.getNome());
     inputSenha.setText(usuario.getSenha());
-  }
-
-  private void exibirErro(String mensagem) {
-    mensagenErro.setVisible(true);
-    mensagenErro.setText(mensagem);
   }
 }
