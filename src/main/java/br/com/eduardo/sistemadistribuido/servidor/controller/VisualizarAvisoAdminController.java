@@ -25,7 +25,27 @@ public class VisualizarAvisoAdminController {
   public void initialize() throws IOException {
 
     List<Aviso> avisoList = avisoRepository.buscarTodos();
+    System.out.print(
+        """
+        {
+            "operacao": "listarAvisos",
+            "token": "9999999",
+            "categoria": 0
+        }
+        """
+    );
+
     setAvisos(avisoList);
+
+    System.out.printf(
+        """
+        {
+            "status": "201",
+            "operacao": "listarAvisos",
+            "avisos": %s
+        }
+        """, avisoList
+    );
   }
 
   public void setAvisos(List<Aviso> avisos) {
