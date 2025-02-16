@@ -8,10 +8,12 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.*;
 
 public class ServerApplication extends Thread {
   protected Socket clientSocket;
+
+  public static Set<String> usuariosConectados = new LinkedHashSet<>();
 
   public ServerApplication() {
   }

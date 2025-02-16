@@ -2,6 +2,7 @@ package br.com.eduardo.sistemadistribuido.servidor.handler;
 
 import br.com.eduardo.sistemadistribuido.entity.Usuario;
 import br.com.eduardo.sistemadistribuido.model.request.LoginRequest;
+import br.com.eduardo.sistemadistribuido.model.request.LogoutRequest;
 import br.com.eduardo.sistemadistribuido.model.response.LoginSucessoResponse;
 import br.com.eduardo.sistemadistribuido.model.response.MensagemOperacaoResponse;
 import br.com.eduardo.sistemadistribuido.model.response.MensagemStatusResponse;
@@ -15,9 +16,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.io.IOException;
 
+import static br.com.eduardo.sistemadistribuido.servidor.ServerApplication.usuariosConectados;
 import static br.com.eduardo.sistemadistribuido.servidor.handler.AvisoHandler.*;
-import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.*;
 import static br.com.eduardo.sistemadistribuido.servidor.handler.CategoriaHandler.*;
+import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.*;
 
 public class RequestHandler {
   public String processRequest(String inputLine) throws IOException {
@@ -32,7 +34,7 @@ public class RequestHandler {
       case "editarUsuario" -> handleEditarUsuario(jsonNode);
       case "localizarUsuario" -> handlelocalizarUsuario(jsonNode);
       case "login" -> handleLogin(jsonNode);
-      case "logout" -> handleLogout();
+      case "logout" -> handleLogout(jsonNode);
       case "cadastrarUsuarioCategoria" -> handleCadastrarUsuarioCategoria(jsonNode);
       case "listarUsuarioCategorias" -> handleListarUsuarioCategorias(jsonNode);
       case "descadastrarUsuarioCategoria" -> handleDescadastrarUsuarioCategoria(jsonNode);
@@ -59,6 +61,10 @@ public class RequestHandler {
         LoginSucessoResponse response = new LoginSucessoResponse();
         response.setStatus(200);
         response.setToken(usuario.getRa());
+
+        usuariosConectados.add(usuario.getRa());
+        printarUsuariosConectadosServer();
+
         return JsonUtil.serialize(response);
       } else {
         return createErrorResponse("Usuário ou senha inválidos", 401, "login");
@@ -70,9 +76,14 @@ public class RequestHandler {
     }
   }
 
-  private String handleLogout() throws JsonProcessingException {
+  private String handleLogout(JsonNode jsonNode) throws JsonProcessingException {
+    LogoutRequest loginRequest = JsonUtil.treeToValue(jsonNode, LogoutRequest.class);
+
     MensagemStatusResponse response = new MensagemStatusResponse();
     response.setStatus(200);
+
+    usuariosConectados.remove(loginRequest.getToken());
+    printarUsuariosConectadosServer();
     return JsonUtil.serialize(response);
   }
 
@@ -86,5 +97,11 @@ public class RequestHandler {
     response.setMensagem(mensagem);
     response.setStatus(status);
     return JsonUtil.serialize(response);
+  }
+
+  private void printarUsuariosConectadosServer() {
+    System.out.println("|--- USUÁRIOS CONECTADOS ---|");
+    usuariosConectados.forEach(ra -> System.out.println("RA: " + ra));
+    System.out.println("|---------------------------|");
   }
 }

@@ -156,18 +156,10 @@ public class UsuarioHandler {
     if (!ValidacaoService.isValidSenha(usuarioDto.getSenha())) {
       invalidFields.add("Senha");
     }
-    if (!ValidacaoService.isValidNome(usuarioDto.getNome())) {
-      invalidFields.add("Nome");
-    }
 
     if (!invalidFields.isEmpty()) {
       throw new IllegalArgumentException(String.join(", ", invalidFields));
     }
-  }
-
-
-  private static String createErrorResponse(String operacao) throws JsonProcessingException {
-    return createErrorResponse("Operacao desconhecida", 400, operacao);
   }
 
   private static String createErrorResponse(String mensagem, int status, String operacao) throws JsonProcessingException {

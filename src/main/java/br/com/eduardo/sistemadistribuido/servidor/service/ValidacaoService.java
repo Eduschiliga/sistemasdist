@@ -11,7 +11,4 @@ public class ValidacaoService {
     return ra != null && ra.length() == 7 && Pattern.matches("^[0-9]+$", ra);
   }
 
-  public static boolean isValidNome(String nome) {
-    return nome != null && nome.length() <= 50 && Pattern.matches("^[A-Z]+$", nome);
-  }
 }
