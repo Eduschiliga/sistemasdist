@@ -32,6 +32,9 @@ public class RequestHandler {
       case "localizarUsuario" -> handlelocalizarUsuario(jsonNode);
       case "login" -> handleLogin(jsonNode);
       case "logout" -> handleLogout();
+      case "cadastrarUsuarioCategoria" -> handleCadastrarUsuarioCategoria(jsonNode);
+      case "listarUsuarioCategorias" -> handleListarUsuarioCategorias(jsonNode);
+      case "descadastrarUsuarioCategoria" -> handleDescadastrarUsuarioCategoria(jsonNode);
       default -> createErrorResponse(operacao);
     };
 

@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CadastrarUsuarioCategoriaRequest {
-  private String operacao = "cadastrarUsuarioCategoria";
+public class DescadastrarUsuarioCategoriaRequest {
+  private String operacao = "descadastrarUsuarioCategoria";
   private String token = ClienteApplication.token;
   private String ra = ClienteApplication.token;
   private Integer categoria;

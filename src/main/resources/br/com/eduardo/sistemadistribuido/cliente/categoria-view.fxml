@@ -9,9 +9,8 @@
 
     <top>
         <HBox spacing="10" alignment="CENTER" BorderPane.alignment="CENTER">
-            <Label text="Categorias Disponíveis"/>
             <Label fx:id="mensagenErro" textFill="red"/>
-<!--            <TextField fx:id="campoNomeCategoria" editable="false"/>-->
+            <Button fx:id="categoriaCadastradas" text="Listar Categorias Cadastradas" onAction="#buscarCategoriasCadastradas"/>
         </HBox>
     </top>
 
@@ -20,6 +19,8 @@
             <columns>
                 <TableColumn fx:id="colunaId" prefWidth="200.0" text="ID"/>
                 <TableColumn fx:id="colunaNome" prefWidth="300.0" text="NOME"/>
+                <TableColumn fx:id="colunaCadastrar" prefWidth="100.0" text="Cadastrar"/>
+                <TableColumn fx:id="colunaDescadastrar" prefWidth="100.0" text="Descadastrar"/>
             </columns>
         </TableView>
     </center>

@@ -25,7 +25,7 @@ public class Categoria {
     return this.nome;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 

@@ -43,8 +43,16 @@ public class AvisoCategoriaRepository {
   }
 
   public List<Categoria> buscarCategoriasPorRa(String ra) {
-    return entityManager.createQuery("SELECT a.categoria FROM AvisoCategoriaUsuario a WHERE a.ra = :ra", Categoria.class)
-        .setParameter("ra", ra)
+    String sql = "SELECT c.* " +
+        "FROM aviso_categoria_usuario acu " +
+        "JOIN aviso_categoria_usuario_categoria acuc " +
+        "   ON acu.ra_usuario = acuc.avisocategoriausuario_ra_usuario " +
+        "JOIN categoria c " +
+        "   ON acuc.categorias_categoria_id = c.categoria_id " +
+        "WHERE acu.ra_usuario = ?1";
+
+    return entityManager.createNativeQuery(sql, Categoria.class)
+        .setParameter(1, ra)
         .getResultList();
   }
 
