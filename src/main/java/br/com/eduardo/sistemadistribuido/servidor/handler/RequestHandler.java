@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.io.IOException;
 
+import static br.com.eduardo.sistemadistribuido.servidor.handler.AvisoHandler.*;
 import static br.com.eduardo.sistemadistribuido.servidor.handler.UsuarioHandler.*;
 import static br.com.eduardo.sistemadistribuido.servidor.handler.CategoriaHandler.*;
 
@@ -35,6 +36,9 @@ public class RequestHandler {
       case "cadastrarUsuarioCategoria" -> handleCadastrarUsuarioCategoria(jsonNode);
       case "listarUsuarioCategorias" -> handleListarUsuarioCategorias(jsonNode);
       case "descadastrarUsuarioCategoria" -> handleDescadastrarUsuarioCategoria(jsonNode);
+      case "listarAvisos" -> handleListarAvisos(jsonNode);
+      case "localizarAviso" -> handleLocalizarAviso(jsonNode);
+      case "listarUsuarioAvisos" -> handleListarUsuarioAvisos(jsonNode);
       default -> createErrorResponse(operacao);
     };
 

@@ -2,7 +2,9 @@ package br.com.eduardo.sistemadistribuido.cliente.controller;
 
 import br.com.eduardo.sistemadistribuido.entity.Aviso;
 import br.com.eduardo.sistemadistribuido.model.request.ListarAvisosRequest;
+import br.com.eduardo.sistemadistribuido.model.request.ListarUsuarioAvisosRequest;
 import br.com.eduardo.sistemadistribuido.model.response.ListarAvisosResponse;
+import br.com.eduardo.sistemadistribuido.model.response.ListarUsuarioAvisosResponse;
 import br.com.eduardo.sistemadistribuido.model.response.MensagemOperacaoResponse;
 import br.com.eduardo.sistemadistribuido.util.AlertUtil;
 import br.com.eduardo.sistemadistribuido.util.JsonUtil;
@@ -15,8 +17,7 @@ import javafx.scene.control.ListView;
 import java.io.IOException;
 import java.util.List;
 
-public class VisualizarAvisoController {
-
+public class VisualizarAvisoCadastradoController {
   @FXML
   private ListView<String> listViewAvisos;
 
@@ -24,8 +25,7 @@ public class VisualizarAvisoController {
   private Label mensagenErro;
 
   public void initialize() throws IOException {
-    ListarAvisosRequest listarAvisosRequest = new ListarAvisosRequest();
-    listarAvisosRequest.setCategoria(0);
+    ListarUsuarioAvisosRequest listarAvisosRequest = new ListarUsuarioAvisosRequest();
 
     String json = JsonUtil.serialize(listarAvisosRequest);
     String retorno = SocketManager.enviarSocket(json);
@@ -38,7 +38,7 @@ public class VisualizarAvisoController {
 
     switch (jsonNode.get("status").intValue()) {
       case 201:
-        ListarAvisosResponse listarAvisosResponse = JsonUtil.treeToValue(jsonNode, ListarAvisosResponse.class);
+        ListarUsuarioAvisosResponse listarAvisosResponse = JsonUtil.treeToValue(jsonNode, ListarUsuarioAvisosResponse.class);
 
         List<Aviso> avisoList = listarAvisosResponse.getAvisos();
 

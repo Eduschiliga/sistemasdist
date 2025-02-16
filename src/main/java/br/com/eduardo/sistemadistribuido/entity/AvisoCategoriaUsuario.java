@@ -20,6 +20,6 @@ public class AvisoCategoriaUsuario {
   @Column(name = "ra_usuario")
   private String ra;
 
-  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH}, fetch = FetchType.EAGER)
   private List<Categoria> categorias = new ArrayList<>();
 }

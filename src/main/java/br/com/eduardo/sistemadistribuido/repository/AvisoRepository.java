@@ -36,6 +36,13 @@ public class AvisoRepository {
     return entityManager.find(Aviso.class, id);
   }
 
+  public List<Aviso> buscarPorCategoriaId(int categoriaId) {
+    return entityManager.createQuery(
+            "SELECT a FROM Aviso a WHERE a.categoria.id = :categoriaId", Aviso.class)
+        .setParameter("categoriaId", categoriaId)
+        .getResultList();
+  }
+
   public Aviso buscarPorTitulo(String titulo) {
     return entityManager.createQuery("SELECT a FROM Aviso a WHERE a.titulo = :titulo", Aviso.class)
         .setParameter("titulo", titulo)
@@ -68,5 +75,12 @@ public class AvisoRepository {
 
   public List<Aviso> buscarTodos() {
     return entityManager.createQuery("SELECT a FROM Aviso a", Aviso.class).getResultList();
+  }
+
+  public List<Aviso> buscarPorCategoriaIds(List<Integer> categoriaIds) {
+    return entityManager.createQuery(
+            "SELECT a FROM Aviso a WHERE a.categoria.id IN :categoriaIds", Aviso.class)
+        .setParameter("categoriaIds", categoriaIds)
+        .getResultList();
   }
 }

@@ -43,6 +43,11 @@ public class PrincipalController {
   }
 
   @FXML
+  void visualizarAvisoCadastrado(ActionEvent event) throws IOException {
+    setTela("VisualizarAvisoCadastrado");
+  }
+
+  @FXML
   void deslogar(ActionEvent event) {
     LogoutService.logout();
   }
@@ -74,6 +79,16 @@ public class PrincipalController {
           principal.setCenter(fxmlVisualizarAviso);
         } else {
           AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarAviso' não carregada.");
+        }
+        break;
+
+      case "VisualizarAvisoCadastrado":
+        Parent fxmlVisualizarAvisoCadastrado = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/visualizar-aviso-cadastrado.fxml")));
+
+        if (fxmlVisualizarAvisoCadastrado != null) {
+          principal.setCenter(fxmlVisualizarAvisoCadastrado);
+        } else {
+          AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarAvisoCadastrado' não carregada.");
         }
         break;
 

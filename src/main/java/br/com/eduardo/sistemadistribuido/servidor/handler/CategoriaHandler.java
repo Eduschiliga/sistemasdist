@@ -189,7 +189,7 @@ public class CategoriaHandler {
     }
   }
 
-  private static String createErrorResponse(String mensagem, String operacao) throws JsonProcessingException {
+  public static String createErrorResponse(String mensagem, String operacao) throws JsonProcessingException {
     MensagemOperacaoResponse response = new MensagemOperacaoResponse();
     response.setOperacao(operacao);
     response.setMensagem(mensagem);

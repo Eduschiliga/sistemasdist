@@ -25,7 +25,8 @@
             <Menu mnemonicParsing="false" text="Visualizar">
                 <MenuItem mnemonicParsing="false" onAction="#visualizarUsuario" text="Perfil"/>
                 <MenuItem mnemonicParsing="false" onAction="#visualizarCategoria" text="Categorias"/>
-                <MenuItem mnemonicParsing="false" onAction="#visualizarAviso" text="Avisos"/>
+                <MenuItem mnemonicParsing="false" onAction="#visualizarAviso" text="Todos Avisos"/>
+                <MenuItem mnemonicParsing="false" onAction="#visualizarAvisoCadastrado" text="Avisos Cadastrados"/>
             </Menu>
 
             <Menu mnemonicParsing="false" text="Configurações">
