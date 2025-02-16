@@ -118,7 +118,6 @@ public class PrincipalController {
   void initialize() throws IOException {
     try {
       fxmlHome = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/cliente/home-view.fxml")));
-
     } catch (IOException e) {
       setTela("Home");
     } finally {

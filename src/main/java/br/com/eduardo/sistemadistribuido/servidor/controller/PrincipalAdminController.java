@@ -27,6 +27,11 @@ public class PrincipalAdminController {
   }
 
   @FXML
+  void visualizarAvisos(ActionEvent event) throws IOException {
+    setTela("VisualizarAvisos");
+  }
+
+  @FXML
   void localizarUsuario(ActionEvent event) throws IOException {
     setTela("LocalizarUsuario");
   }
@@ -58,6 +63,17 @@ public class PrincipalAdminController {
           principal.setCenter(fxmlVisualizarPerfil);
         } else {
           AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarPerfil' não carregada.");
+        }
+        break;
+
+
+      case "VisualizarAvisos":
+        Parent fxmlVisualizarAvisos = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/servidor/visualizar-aviso-admin.fxml")));
+
+        if (fxmlVisualizarAvisos != null) {
+          principal.setCenter(fxmlVisualizarAvisos);
+        } else {
+          AlertUtil.alert("Erro", "Erro", "Tela 'VisualizarAvisos' não carregada.");
         }
         break;
 
@@ -95,13 +111,6 @@ public class PrincipalAdminController {
 
   @FXML
   void initialize() throws IOException {
-    try {
-      fxmlHome = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/br/com/eduardo/sistemadistribuido/servidor/home-admin-view.fxml")));
-
-    } catch (IOException e) {
-      setTela("Home");
-    } finally {
-      setTela("Home");
-    }
+    setTela("VisualizarAvisos");
   }
 }

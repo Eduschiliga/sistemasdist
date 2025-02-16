@@ -15,13 +15,10 @@
         fx:controller="br.com.eduardo.sistemadistribuido.servidor.controller.PrincipalAdminController">
     <top>
         <MenuBar prefHeight="2.0" prefWidth="900.0" BorderPane.alignment="CENTER">
-            <Menu mnemonicParsing="false" text="Principal">
-                <MenuItem mnemonicParsing="false" onAction="#visualizar" text="Home"/>
-            </Menu>
-
             <Menu mnemonicParsing="false" text="Visualizar">
                 <MenuItem mnemonicParsing="false" onAction="#visualizarPerfil" text="Perfil"/>
                 <MenuItem mnemonicParsing="false" onAction="#localizarUsuario" text="Usuários"/>
+                <MenuItem mnemonicParsing="false" onAction="#visualizarAvisos" text="Avisos"/>
             </Menu>
 
             <Menu mnemonicParsing="false" text="Cadastrar">

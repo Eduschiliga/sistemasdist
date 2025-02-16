@@ -19,9 +19,6 @@
                 <MenuItem mnemonicParsing="false" onAction="#visualizar" text="Visualizar"/>
             </Menu>
 
-            <Menu mnemonicParsing="false" text="Cadastrar">
-                <MenuItem mnemonicParsing="false" onAction="#vincularAviso" text="Aviso"/>
-            </Menu>
             <Menu mnemonicParsing="false" text="Visualizar">
                 <MenuItem mnemonicParsing="false" onAction="#visualizarUsuario" text="Perfil"/>
                 <MenuItem mnemonicParsing="false" onAction="#visualizarCategoria" text="Categorias"/>
