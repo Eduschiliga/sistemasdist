@@ -109,7 +109,11 @@ public class AvisoHandler {
       return JsonUtil.serialize(response);
 
     } catch (NoResultException e) {
-      return createErrorResponse("Usuário não encontrado!", "listarAvisosPorCategoriasUsuario");
+      ListarAvisosResponse response = new ListarAvisosResponse();
+      response.setStatus(201);
+      response.setAvisos(new ArrayList<>());
+
+      return JsonUtil.serialize(response);
     } catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar JSON", "listarAvisosPorCategoriasUsuario");
     } catch (Exception e) {

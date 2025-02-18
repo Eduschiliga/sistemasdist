@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriaHandler {
@@ -45,8 +46,13 @@ public class CategoriaHandler {
         return createErrorResponse("Usuário não encontrado ou sem categorias cadastradas!", "listarUsuarioCategorias");
       }
     } catch (NoResultException e) {
-      return createErrorResponse("Usuário não encontrado!", "listarUsuarioCategorias");
-    } catch (JsonProcessingException e) {
+      ListarUsuarioCategoriaResponse response = new ListarUsuarioCategoriaResponse();
+      response.setOperacao("listarUsuarioCategorias");
+      response.setStatus(201);
+      response.setCategorias(new ArrayList<>());
+
+      return JsonUtil.serialize(response);    }
+    catch (JsonProcessingException e) {
       return createErrorResponse("Erro ao processar JSON", "listarUsuarioCategorias");
     } catch (Exception e) {
       return createErrorResponse("Erro inesperado: " + e.getMessage(), "listarUsuarioCategorias");
